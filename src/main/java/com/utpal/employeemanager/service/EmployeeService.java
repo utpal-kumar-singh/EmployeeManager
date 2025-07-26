@@ -12,25 +12,30 @@ import java.util.UUID;
 @Service
 public class EmployeeService {
     private final EmployeeRepo employeeRepo;
-@Autowired
+
+    @Autowired
     public EmployeeService(EmployeeRepo employeeRepo) {
-       this.employeeRepo = employeeRepo;
+        this.employeeRepo = employeeRepo;
     }
-    public Employee addEmployee(Employee employee){
-    employee.setEmployeeCode(UUID.randomUUID().toString());
-    return employeeRepo.save(employee);
+
+    public Employee addEmployee(Employee employee) {
+        employee.setEmployeeCode(UUID.randomUUID().toString());
+        return employeeRepo.save(employee);
     }
-    public List<Employee> findAllEmployee(){
-    return employeeRepo .findAll();
+
+    public List<Employee> findAllEmployee() {
+        return employeeRepo.findAll();
 
     }
 
-    public Employee updateEmployee(Employee employee){
-    return employeeRepo.save(employee);
+    public Employee updateEmployee(Employee employee) {
+        return employeeRepo.save(employee);
     }
-    public Employee findEmployeeBId(Long id){
-    return employeeRepo.findEmployeeById(id).orElseThrow(() ->new UserNotFoundException("user by id"+ id +"was not found"));
+
+    public Employee findEmployeeBId(Long id) {
+        return employeeRepo.findEmployeeById(id).orElseThrow(() -> new UserNotFoundException("user by id" + id + "was not found"));
     }
+
     public void deleteEmployee(Long id) {
         employeeRepo.deleteEmployeeById(id);
     }
