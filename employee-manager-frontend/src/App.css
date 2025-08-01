@@ -1,5 +1,45 @@
+.button {
+  padding: 10px 18px;
+  margin: 5px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-add {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.button-add:hover {
+  background-color: #0056b3;
+}
+
+.button-edit {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.button-edit:hover {
+  background-color: #e0a800;
+}
+
+.button-delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.button-delete:hover {
+  background-color: #b02a37;
+}
+
+/* APP STYLING */
 .App {
   text-align: center;
+  padding: 20px;
 }
 
 .App-logo {
@@ -28,6 +68,7 @@
   color: #61dafb;
 }
 
+/* Logo animation */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

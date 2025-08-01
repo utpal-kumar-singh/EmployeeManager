@@ -43,14 +43,14 @@ const EmployeeList = () => {
       <h2 className="text-2xl font-bold mb-4">Employee List</h2>
       <button
         onClick={handleAdd}
-        className="mb-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+        className="button button-add "
       >
         Add Employee
       </button>
 
       <table className="min-w-full border">
        <thead>
-                 <tr className="bg-gray-200">
+<tr className="bg-gray-200">
                    <th className="py-2 px-4 border">ID</th>
                    <th className="py-2 px-4 border">Name</th>
                    <th className="py-2 px-4 border">Email</th>
@@ -70,13 +70,13 @@ const EmployeeList = () => {
                      <td className="py-2 px-4 border">
                        <button
                   onClick={() => handleEdit(emp.id)}
-                  className="mr-2 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+                  className="button button-edit"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => handleDelete(emp.id)}
-                  className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                  className="button button-delete"
                 >
                   Delete
                 </button>
