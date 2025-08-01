@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @Service
 public class EmployeeService {
+
     private final EmployeeRepo employeeRepo;
 
     @Autowired
@@ -19,13 +20,15 @@ public class EmployeeService {
     }
 
     public Employee addEmployee(Employee employee) {
-        employee.setEmployeeCode(UUID.randomUUID().toString());
+        // Assign a UUID if employeeCode is null or empty
+        if (employee.getEmployeeCode() == null || employee.getEmployeeCode().isEmpty()) {
+            employee.setEmployeeCode(UUID.randomUUID().toString());
+        }
         return employeeRepo.save(employee);
     }
 
-    public List<Employee> findAllEmployee() {
+    public List<Employee> findAllEmployees() {
         return employeeRepo.findAll();
-
     }
 
     public Employee updateEmployee(Employee employee) {
@@ -33,11 +36,14 @@ public class EmployeeService {
     }
 
     public Employee findEmployeeById(Long id) {
-        return employeeRepo.findEmployeeById(id).orElseThrow(() -> new UserNotFoundException("user by id" + id + "was not found"));
+        return employeeRepo.findEmployeeById(id)
+                .orElseThrow(() -> new UserNotFoundException("Employee with id " + id + " not found"));
     }
 
     public void deleteEmployee(Long id) {
-        employeeRepo.deleteEmployeeById(id);
+        if (!employeeRepo.existsById(id)) {
+            throw new RuntimeException("Employee with id " + id + " not found.");
+        }
+        employeeRepo.deleteById(id);
     }
-
 }
