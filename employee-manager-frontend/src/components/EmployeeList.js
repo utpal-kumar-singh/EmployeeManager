@@ -82,8 +82,7 @@ const EmployeeList = () => {
                 </button>
               </td>
             </tr>
-          ))}
-        </tbody>
+          ))}</tbody>
       </table>
     </div>
   );

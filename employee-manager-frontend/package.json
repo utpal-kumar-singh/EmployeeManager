@@ -1,9 +1,12 @@
 {
+
+  "homepage": "https://utpal-kumar-singh.github.io/EmployeeManager",
+
+
   "name": "employee-manager-frontend",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8080",
-
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.6.4",
@@ -18,6 +21,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -40,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
