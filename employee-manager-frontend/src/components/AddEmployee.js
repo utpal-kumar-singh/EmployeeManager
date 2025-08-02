@@ -28,7 +28,7 @@ const AddEmployee = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className=" btn-btn container ">
       <h2>Add New Employee</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

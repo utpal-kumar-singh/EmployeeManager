@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getAllEmployees, deleteEmployee } from "../services/employeeService";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -40,50 +42,41 @@ const EmployeeList = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Employee List</h2>
+      <h2 className="section-title">Employee List</h2>
       <button
-        onClick={handleAdd}
+        onClick={() => navigate('/add')}
         className="button button-add "
       >
         Add Employee
       </button>
 
-      <table className="min-w-full border">
-       <thead>
-<tr className="bg-gray-200">
-                   <th className="py-2 px-4 border">ID</th>
-                   <th className="py-2 px-4 border">Name</th>
-                   <th className="py-2 px-4 border">Email</th>
-                   <th className="py-2 px-4 border">Job Title</th>
-                   <th className="py-2 px-4 border">PhoneNumber</th> {/* Added header */}
-                   <th className="py-2 px-4 border">Actions</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 {employees.map((emp) => (
-                   <tr key={emp.id}>
-                     <td className="py-2 px-4 border">{emp.id}</td>
-                     <td className="py-2 px-4 border">{emp.name}</td>
-                     <td className="py-2 px-4 border">{emp.email}</td>
-                     <td className="py-2 px-4 border">{emp.jobTitle}</td>
-                     <td className="py-2 px-4 border">{emp.phoneNumber}</td> {/* Added row */}
-                     <td className="py-2 px-4 border">
-                       <button
-                  onClick={() => handleEdit(emp.id)}
-                  className="button button-edit"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(emp.id)}
-                  className="button button-delete"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}</tbody>
-      </table>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+        {employees.map((emp) => (
+          <div key={emp.id} className="max-w-sm mx-auto bg-white shadow-md rounded-lg p-4 border hover:shadow-lg transition">
+            <h2 className="text-xl font-semibold mb-2">{emp.name}</h2>
+            <p><span className="font-semibold">ID:</span> {emp.id}</p>
+            <p><span className="font-semibold">Email:</span> {emp.email}</p>
+            <p><span className="font-semibold">Job Title:</span> {emp.jobTitle}</p>
+            <p><span className="font-semibold">Phone:</span> {emp.phoneNumber}</p>
+
+            <div className="mt-4 flex justify-between">
+              <button
+                onClick={() => handleEdit(emp.id)}
+               className="button button-add "
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDelete(emp.id)}
+               className="button button-add "
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
     </div>
   );
 };
